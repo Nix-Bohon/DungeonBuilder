@@ -1,0 +1,23 @@
+* todo items
+** Frontend
+*** TODO [#B] Research how to display
+*** TODO [#B] implement it
+** Backend
+*** TODO [#A] Add authentication process
+*** TODO [#C] Expand algorithm to include more room elements from original pdf.
+**** TODO [#C] Add support for generating monsters
+**** TODO [#C] Add support for generating treasure
+*** TODO [#A] Add unit tests
+** Data persistence
+*** DONE [#A] research db type
+**** Requirements:
+***** Integrates with ASPNET easily.
+***** Cheap or free hosting for DB.
+***** Good for storing document type data (cassandra, mongo, etc)
+**** Entity FrameWork (EF Core) dbs:
+|   | db                   | pros                      | cons                                                |
+|---+----------------------+---------------------------+-----------------------------------------------------|
+| * | SQLite               | easy to add               | Does not support foreign keys, droping columns, etc |
+|   | Microsoft SQL Server | Good industry adoption    | Sort of a heavy solution                            |
+|   | PostgreSQL           | Open source full featured | No experience and more complicated than SQLite      |
+*** DONE [#B] wire it into aspnet project.
