@@ -12,8 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
-
-
+using Swashbuckle.Swagger.Model;
 
 namespace DungeonBuilder
 {
@@ -37,7 +36,17 @@ namespace DungeonBuilder
             // Add framework services.
             services.AddMvc()
 		.AddXmlSerializerFormatters();
-	}
+
+            services.AddSwaggerGen(options => 
+            {
+                options.SingleApiVersion(new Info{
+                    Version="v1",
+                    Title="Deungon API",
+                    Description="API for building and managing dungeons",
+                    TermsOfService = "None"
+                });
+            });
+        }
 	
 	// method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -45,8 +54,10 @@ namespace DungeonBuilder
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseSwagger();
+            app.UseSwaggerUi();
             app.UseMvc();
-	    app.UseStaticFiles();
+	        app.UseStaticFiles();
         }
     }
 }
